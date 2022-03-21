@@ -1,0 +1,7 @@
+node_modules
+.vscode
+img/*
+data/*
+*.png,*.jpg,*.pdf
+*.ini
+*.log

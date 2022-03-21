@@ -1,0 +1,79 @@
+@function unicode($str) {@return unquote("\"")+unquote(str-insert($str, "\\", 1))+unquote("\"");} // Workaround for unicode characters for sass/scss compilers
+
+html,body,iframe{
+    height: 100%;
+}
+
+.staff-gallery figure.show-hover-effect:hover {
+    &:before {
+        content: url(https://superiorcounseling.care/wp-content/uploads/sites/18/2022/03/play.svg);
+        position: absolute;
+        width: 100%;
+        padding: 20%;
+        transition: 0.5s 0.5s ease;
+    }
+    img {
+        opacity: 0.3;
+        transition: 0.5s ease;
+    }
+}
+
+#fadeback {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background-color: rgb(000, 000, 000,0.8);
+    //opacity: .8; // 03/21/2022 Use RGB instead of opactiy because it doesn't effect children
+    // filter: alpha(opacity=80);
+}
+
+#lightbox {
+    display: none;
+    position: absolute;
+    width: clamp(300px,60vw,800px);
+    aspect-ratio: 16/9; // Maintains height in relation to width for default YouTube video size
+    border: 2px solid #fff;
+    background: #fff;
+    z-index: 1002;
+    overflow: visible;
+    #videoPlayer {
+        width: 100%;
+        height: auto;
+    }
+}
+
+#boxclose {
+    position: absolute;
+    float: right;
+    right: 2px;
+    top: 2px;
+    z-index: 1002;
+    font-size: 30px;
+    padding: .4em .1em;
+    color: #fff;
+    border: 1px solid #aeaeae;
+    border-radius: 3px;
+    background: #222222;
+    line-height: 0px;
+    opacity: 0.9;
+    cursor: pointer;
+    text-decoration-line: none; // Hides underlines added from stylesheets for links
+    &:hover{
+        color: #aeaeae;
+        font-weight: bold;
+    }
+}
+
+.boxclose:before {
+    content: unicode("00d7");
+}
+
+#fadeback:hover ~ #boxclose {
+    display: none;
+}
