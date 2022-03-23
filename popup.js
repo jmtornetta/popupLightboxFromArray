@@ -1,10 +1,21 @@
-/* Prepare iframe, popup, and medial urls*/
-(function lightbox_init(queryMedia,queryLink,hoverClass) {
-    /** Sample configuration
-        const queryMedia = ".staff-gallery figure" // The media that contains the URL for the video iframe
-        const queryLink = "a" // The element that has the attribute (eg: href) that we want to grab
-        const hoverClass = "show-hover-effect" // The class to apply to the media to set hover styles
-    **/
+/* Sample configuration
+const lightbox_selectors = {
+   queryMedia : ".staff-gallery figure", // The media that contains the URL for the video iframe
+   queryLink : "a", // The element that has the attribute (eg: href) that we want to grab
+   hoverClass : "show-hover-effect" // The class to apply to the media to set hover styles
+};
+*/
+
+ const lightbox_selectors = {
+     queryMedia : "", // The media that contains the URL for the video iframe
+     queryLink : "", // The element that has the attribute (eg: href) that we want to grab
+     hoverClass : "" // The class to apply to the media to set hover styles
+ };
+
+ /* Prepare iframe, popup, and medial urls*/
+ (function lightbox_init(queryMedia,queryLink,hoverClass) {
+    /* Guard clause for config */
+    if(queryMedia == "" || queryLink == "" || hoverClass == "") throw "Error: Must complete configuration for selectors for popupLightboxFromArray script!"
 
     /* Cause escape key to close popup */
     document.addEventListener("keydown", (e)=>{if(e.key == "Escape") lightbox_close()})
@@ -42,8 +53,7 @@
         iframePlayer.setAttribute('id', 'iframePlayer')
         document.getElementById('videoPlayer').append(iframePlayer)
     }
-})() // Immediately invoked function because nothing else is needed in the global object scope
-
+})(lightbox_selectors.queryMedia,lightbox_selectors.queryLink,lightbox_selectors.hoverClass); // Immediately invoked function because nothing else is needed in the global object scope
 
 /* Open popup, source video URL to iframe, play video */
 function lightbox_open(event, url) {
