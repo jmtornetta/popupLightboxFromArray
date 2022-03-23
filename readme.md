@@ -1,6 +1,6 @@
 # About
 ## Description
-Makes a lightbox popup from an array of html elements (e.g. gallery, bulleted list, slideshow).
+Makes lightbox popups from an array of html elements (e.g. a gallery, bulleted list, slideshow). Works on any HTML web page or website page builder where custom scripts are accepted. No bloat, a few simple arguments.
 ## Author
 Jon Tornetta  
 https://github.com/jmtornetta  
